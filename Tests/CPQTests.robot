@@ -144,7 +144,7 @@ Delete Single Quote
     ...                        VerifyText                  was deleted
 
 Delete All Products
-    ClickText                  Products                    partial_match=true          anchor=Related              delay=2
+    ClickText                  Products(                    partial_match=true          anchor=Related              delay=2
 
     # Check and delete Google Cloud Platform
     ${gcp_exists}=             IsText                      Google Cloud Platform       partial_match=false         timeout=5
