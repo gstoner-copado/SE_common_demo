@@ -7,7 +7,7 @@ Library                         Collections
 
 
 *** Variables ***
-${BROWSER}                      chrome
+${BROWSER}                      firefox
 ${homeUrl}                     ${loginUrl}/lightning/page/home
 
 
