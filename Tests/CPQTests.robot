@@ -11,7 +11,7 @@ Create CPQ Quote
 #
     #Navigate to home page, conditionally login, launch the CPQ app and load our opportunity.
     Home
-    LaunchApp                  Salesforce CPQ
+    LaunchApp                  Sales
     GoTo                       ${oppUrl}
 
     #Create a quote for the opportunity
