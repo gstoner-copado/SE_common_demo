@@ -48,7 +48,7 @@ Use developer console to Execute Anonymous Apex
     ClickText              Debug
     VerifyText             Open Execute Anonymous Window
     ClickText              Open Execute Anonymous Window
-    TypeText               Enter Apex Code             ${sampleApex}
+    TypeText               Enter Apex Code             ${sampleApex}    clear_key={CONTROL + a} 
     ClickText              Open Log
     VerifyText             Execute                     anchor=Open Log
     ClickText              Execute                     anchor=Open Log
