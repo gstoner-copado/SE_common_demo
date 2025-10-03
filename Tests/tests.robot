@@ -1,4 +1,5 @@
 *** Settings ***
+Library                    QWeb
 Resource                   ../Common/common.robot
 Suite Setup                Setup Browser
 Suite Teardown             End suite
@@ -10,7 +11,7 @@ ${sampleApex}              System.Debug('${message}');
 *** Test Cases ***
 Update Remote Site Settings
     [Tags]                 Deployment Automation
-    SetConfig              DefaultTimeout    60s
+    SetConfig              DefaultTimeout              60s
     Login
     GoTo                   ${login_url}lightning/setup/SetupOneHome/home
     TypeText               Quick Find                  Remote Site Settings        delay=2
@@ -48,7 +49,7 @@ Use developer console to Execute Anonymous Apex
     ClickText              Debug
     VerifyText             Open Execute Anonymous Window
     ClickText              Open Execute Anonymous Window
-    TypeText               Enter Apex Code             ${sampleApex}    clear_key={CONTROL + a} 
+    TypeText               Enter Apex Code             ${sampleApex}               clear_key={CONTROL + a}
     ClickText              Open Log
     VerifyText             Execute                     anchor=Open Log
     ClickText              Execute                     anchor=Open Log
@@ -59,10 +60,10 @@ Use developer console to Execute Anonymous Apex
     CloseWindow
 
 Execute Apex from File
-    [Documentation]    This test case executes Apex code from a .apex file. 
-    ...                We pass the ExecuteApex keyword the file directory with the flag of is_file=true.
-    ...                Finally, the results can be returned directly to the ${results} variable.
-    ...                This method requires API authentication using the Authenticate keyword. 
+    [Documentation]        This test case executes Apex code from a .apex file.
+    ...                    We pass the ExecuteApex keyword the file directory with the flag of is_file=true.
+    ...                    Finally, the results can be returned directly to the ${results} variable.
+    ...                    This method requires API authentication using the Authenticate keyword.
     Home
     Authenticate           ${consumer_key}             ${consumer_secret}          ${username}                 ${password}
     ${results}=            ExecuteApex                 ${CURDIR}/sampleApex.apex                               is_file=True
@@ -90,33 +91,43 @@ Enable/Disable Einstein
     [Tags]                 Deployment Automation
     Home
     GoTo                   ${login_url}lightning/setup/SetupOneHome/home
-    TypeText               Quick Find                  Einstein
-    ClickText              Settings                    anchor=Einstein Discovery
-    VerifyText             Enable Decision Optimization (Beta)
-    ClickCheckbox          Enable Decision Optimization (Beta)EnabledDisabled      on
-    VerifyText             Enabled
-    ClickCheckbox          Enable Decision Optimization (Beta)EnabledDisabled      off
-    VerifyText             Disabled
+    TypeText               Quick Find                  Einstein Bots
+    ClickText              Einstein Bots               anchor=Einstein Platform
+    ClickCheckbox          Einstein BotsOnOff          off
+    VerifyText             Do you want to disable Einstein Bots?
+    ClickText              No                          partial_match=False
+    ClickCheckbox          Einstein BotsOnOff          on
+    VerifyText             Einstein BotsOn             recognition_mode=vision
+    VerifyNoText           Einstein BotsOff            recognition_mode=vision
+    # legacy script - GS Edit:
+    # TypeText             Quick Find                  Einstein
+    # ClickText            Settings                    anchor=Einstein Discovery
+    # VerifyText           Enable Decision Optimization (Beta)
+    # ClickCheckbox        Enable Decision Optimization (Beta)EnabledDisabled      on
+    # VerifyText           Enabled
+    # ClickCheckbox        Enable Decision Optimization (Beta)EnabledDisabled      off
+    # VerifyText           Disabled
 
 
-## NEEDS REPAIRS
-# Enable/Disable Triggers
-#     [Tags]                 Deployment Automation
-#     Home
-#     GoTo                   ${login_url}lightning/setup/SetupOneHome/home
-#     TypeText               Quick Find                  Apex Triggers
-#     VerifyText             Apex Triggers
-#     ClickText              Apex Triggers
-#     VerifyText             This page allows you to view and modify all the triggers                            timeout=120
-#     VerifyText             AccountTriggerExample
-#     ClickText              AccountTriggerExample
-#     VerifyText             Apex Trigger Detail                        timeout=120
-#     ClickText              Edit
-#     ClickCheckbox          is active                   on
-#     VerifyCheckboxValue    is active                   on
-#     ClickCheckbox          is active                   off
-#     VerifyCheckboxValue    is active                   off
-#     ClickText              Save
+
+    ## NEEDS REPAIRS
+    # Enable/Disable Triggers
+    #                      [Tags]                      Deployment Automation
+    #                      Home
+    #                      GoTo                        ${login_url}lightning/setup/SetupOneHome/home
+    #                      TypeText                    Quick Find                  Apex Triggers
+    #                      VerifyText                  Apex Triggers
+    #                      ClickText                   Apex Triggers
+    #                      VerifyText                  This page allows you to view and modify all the triggers               timeout=120
+    #                      VerifyText                  AccountTriggerExample
+    #                      ClickText                   AccountTriggerExample
+    #                      VerifyText                  Apex Trigger Detail         timeout=120
+    #                      ClickText                   Edit
+    #                      ClickCheckbox               is active                   on
+    #                      VerifyCheckboxValue         is active                   on
+    #                      ClickCheckbox               is active                   off
+    #                      VerifyCheckboxValue         is active                   off
+    #                      ClickText                   Save
 
 
 
@@ -160,37 +171,37 @@ Activate/Deactivate Process Builder
     [Tags]                 Deployment Automation
     Home
     ##TODO: Process Builder has been deprecated
-    
-    # GoTo                   ${login_url}lightning/setup/SetupOneHome/home
-    # TypeText               Quick Find                  Process Builder
-    # VerifyText             Process Builder
-    # ClickText              Process Builder
-    # VerifyText             My Processes
-    # ${success}=    Set Variable    ${FALSE}
-    # FOR    ${i}    IN RANGE    3
-    #     ClickText    Show all versions    anchor=User Story Commit outdates latest Validation
-    #     ${is_expanded}=                   IsText       Version 1: User Story Commit outdates latest
-    #     Exit For Loop If    ${is_expanded}
-    #     Sleep    3
+
+    # GoTo                 ${login_url}lightning/setup/SetupOneHome/home
+    # TypeText             Quick Find                  Process Builder
+    # VerifyText           Process Builder
+    # ClickText            Process Builder
+    # VerifyText           My Processes
+    # ${success}=          Set Variable                ${FALSE}
+    # FOR                  ${i}                        IN RANGE                    3
+    #                      ClickText                   Show all versions           anchor=User Story Commit outdates latest Validation
+    #                      ${is_expanded}=             IsText                      Version 1: User Story Commit outdates latest
+    #                      Exit For Loop If            ${is_expanded}
+    #                      Sleep                       3
     # END
-    # Run Keyword If    not ${is_expanded}    Fail    Failed to expand "Show all versions" after 3 attempts
-    # VerifyText             Deactivate                  anchor=Version 1: User Story Commit outdates latest
-    # ClickText              Deactivate                  anchor=Version 1: User Story Commit outdates latest
-    # VerifyText             Are you sure you want to deactivate this version?
-    # ClickText              Confirm
-    # ${success}=    Set Variable    ${FALSE}
-    # FOR    ${i}    IN RANGE    3
-    #     ClickText    Show all versions    anchor=User Story Commit outdates latest Validation
-    #     ${is_expanded}=                   IsText       Version 1: User Story Commit outdates latest
-    #     Exit For Loop If    ${is_expanded}
-    #     Sleep    3
+    # Run Keyword If       not ${is_expanded}          Fail                        Failed to expand "Show all versions" after 3 attempts
+    # VerifyText           Deactivate                  anchor=Version 1: User Story Commit outdates latest
+    # ClickText            Deactivate                  anchor=Version 1: User Story Commit outdates latest
+    # VerifyText           Are you sure you want to deactivate this version?
+    # ClickText            Confirm
+    # ${success}=          Set Variable                ${FALSE}
+    # FOR                  ${i}                        IN RANGE                    3
+    #                      ClickText                   Show all versions           anchor=User Story Commit outdates latest Validation
+    #                      ${is_expanded}=             IsText                      Version 1: User Story Commit outdates latest
+    #                      Exit For Loop If            ${is_expanded}
+    #                      Sleep                       3
     # END
-    # VerifyText             Activate                    anchor=Version 1: User Story Commit outdates latest
-    # ClickText              Activate                    anchor=Version 1: User Story Commit outdates latest
-    # VerifyText             Activating this process automatically deactivates any other active version.
-    # ClickText              Confirm
+    # VerifyText           Activate                    anchor=Version 1: User Story Commit outdates latest
+    # ClickText            Activate                    anchor=Version 1: User Story Commit outdates latest
+    # VerifyText           Activating this process automatically deactivates any other active version.
+    # ClickText            Confirm
 
 
-#TODO
+    #TODO
 Add or Remove .invalid from Email
     Home
