@@ -24,7 +24,7 @@ Simple End To End Flow
     TypeText                    First Name*                 Marty
     TypeText                    Last Name*                  McFly
     TypeText                    Business Email*             delorean88@copado.com
-    TypeText                    Phone*                      1234567890
+    # TypeText                    Phone*                      1234567890
     TypeText                    Company*                    Copado
     TypeText                    Job Title*                  Sales Engineer
     DropDown                    Country                     Netherlands
@@ -51,7 +51,7 @@ Targeting strategy
     GoTo                        https://www.copado.com/
     #TODO - Update this test case as the demo element no longer exists!!!
     
-    ScrollTo                    Level up your Salesforce DevOps skills with our resource library.
+    ScrollTo                    Org Intelligence™    anchor=DevOps Automation
 
     ### The Copado targeting strategy is a recommended order of preference for choosing element locators:\
     #1 First partial match
@@ -59,9 +59,9 @@ Targeting strategy
     #2 Exact match
     VerifyText                  Learn More                  partial_match=false
     #3 Text based anchor
-    VerifyText                  Learn More                  anchor=Support and Documentation
+    VerifyText                  Learn More                  anchor=Robotic Testing
     #4 Index
-    VerifyText                  Learn More                  anchor=4
+    VerifyText                  Learn More                  anchor=3
     #5 QVision
     #QVision.VerifyText        Learn More
 
