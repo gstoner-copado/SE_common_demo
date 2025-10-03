@@ -16,7 +16,7 @@ ${homeUrl}                      ${loginUrl}/lightning/page/home
 Setup Browser
     Set Library Search Order    QWeb
     Evaluate                    random.seed()
-    Open Browser                about:blank                 ${BROWSER}
+    Open Browser                about:blank                 ${BROWSER}     --disable-features\=TrackingProtection3pcd
     SetConfig                   LineBreak                   ${EMPTY}                    #\ue000
     SetConfig                   DefaultTimeout              20s                         #sometimes salesforce is slow
     SetConfig                   CaseInsensitive             True
