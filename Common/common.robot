@@ -34,7 +34,7 @@ Login
     ${isMFA}=                   IsText                      Verify Your Identity        #Determines MFA is prompted
     Log To Console              ${isMFA}
     IF                          ${isMFA}                    #Conditional Statement for if MFA verification is required to proceed
-         ${mfa_code}=            GetOTP                      ${username}                 ${MY_SECRET}                ${password}
+         ${mfa_code}=            GetOTP                      ${username}                 ${secret}                ${password}
          TypeSecret              Code                        ${mfa_code}
          ClickText               Verify
     END
