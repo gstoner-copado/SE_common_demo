@@ -13,6 +13,7 @@ Update Remote Site Settings
     [Tags]                 Deployment Automation
     SetConfig              DefaultTimeout              60s
     Login
+    VerifyText             Home
     GoTo                   ${login_url}lightning/setup/SetupOneHome/home
     TypeText               Quick Find                  Remote Site Settings        delay=2
     ClickText              Remote Site Settings        delay=6
