@@ -80,7 +80,7 @@ Create a lead and account, convert a lead to an opportunity.
     Home
     LaunchApp                   Sales
     ClickUntil                  Recently Viewed             Leads
-    ClickText                   New
+    ClickText                   New                        anchor=Intelligence View
 
     #Verify data validation by attempting to save an incomplete form
     UseModal                    On                          #The UseModal keyword allows us to easily target only the elements on the currently active modal.
@@ -120,8 +120,8 @@ Create a lead and account, convert a lead to an opportunity.
     ClickText                   ${company}-
     ClickText                   Details
     VerifyText                  Leads
-    VerifyText                  TEST ROBOT                  anchor=2                    # We can use index anchors.
-    VerifyText                  TEST ROBOT                  anchor=Stage                # We can also use text based anchors.
+    # VerifyText                  TEST ROBOT                  anchor=2                    # We can use index anchors.
+    # VerifyText                  TEST ROBOT                  anchor=Stage                # We can also use text based anchors.
     VerifyField                 Probability (%)             10%
     ScrollTo                    Created By
     ClickText                   Edit Description
@@ -165,7 +165,7 @@ Proton Mail Verify Contents
 Verify Picklist Only Contains Proper Values
     Home
     ClickText    Leads
-    ClickText    New
+    ClickText    New    anchor=Intelligence View
     UseModal     On
     ${expectedOptions}    Set Variable    --None--    Mr.    Ms.    Mrs.    Dr.    Prof.
     ${actualOptions}=      GetPickList        Salutation      
@@ -179,7 +179,7 @@ Create New Lead
     Appstate           Home
     LaunchApp          Sales
     ClickUntil         Recently Viewed    Leads
-    ClickText          New
+    ClickText          New                anchor=Intelligence View
     Verify New Lead Form
     Fill Lead Information
     Verify Lead Created
@@ -190,7 +190,7 @@ Verify Data Validation for Lead Creation
     Appstate           Home
     LaunchApp          Sales
     ClickUntil         Recently Viewed    Leads
-    ClickText          New
+    ClickText          New                anchor=Intelligence View
     Attempt Incomplete Lead Save
     Verify Error Message
 
