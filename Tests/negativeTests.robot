@@ -18,7 +18,7 @@ Attempt to Create Lead with Invalid Email
     Appstate                    Home
     LaunchApp                   Sales
     ClickUntil                  Recently Viewed             Leads
-    ClickText                   New
+    ClickText                   New                        anchor=Intelligence View
     Fill Invalid Lead Email
     VerifyText                  We hit a snag.
 
@@ -28,7 +28,7 @@ Attempt to Create Lead without Company
     Appstate                    Home
     LaunchApp                   Sales
     ClickUntil                  Recently Viewed             Leads
-    ClickText                   New
+    ClickText                   New                        anchor=Intelligence View
     Fill Lead without Company
     Verify Company Error Message
 
@@ -38,7 +38,7 @@ Attempt to Create Lead without Lead Status
     Appstate                    Home
     LaunchApp                   Sales
     ClickUntil                  Recently Viewed             Leads
-    ClickText                   New
+    ClickText                   New                        anchor=Intelligence View
     Fill Lead without Lead Status
     Verify Lead Status Error Message
 
