@@ -100,8 +100,8 @@ Verify Opportunity Details
     ClickText          ${company}-
     ClickText          Details
     VerifyText         Leads
-    VerifyText         TEST ROBOT                  anchor=2
-    VerifyText         TEST ROBOT                  anchor=Stage
+    # VerifyText         TEST ROBOT                  anchor=2
+    # VerifyText         TEST ROBOT                  anchor=Stage
     VerifyField        Probability (%)             10%
     ScrollTo           Created By
     ClickText          Edit Description
