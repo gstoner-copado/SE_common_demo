@@ -9,6 +9,7 @@ Suite Teardown                 End suite
 *** Test Cases ***
 Create CPQ Quote  
 #
+#
     #Navigate to home page, conditionally login, launch the CPQ app and load our opportunity.
     Home
     LaunchApp                  Sales
