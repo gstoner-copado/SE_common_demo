@@ -13,8 +13,13 @@ Simple End To End Flow
     ...                         We enter a lead from a website, log into Salesforce, and verify the lead and status.
     [Tags]                      E2E                         Lead                        Lead Generation
     GoTo                        https://www.copado.com/robotic-testing
-    VerifyText                  Talk to Sales
-    ClickText                   Talk to Sales       
+    # Verify and click whichever text is present
+    ${text_found}=              IsText                      Talk to Sales               timeout=3s
+    IF    ${text_found}
+        ClickText               Talk to Sales
+    ELSE
+        ClickText               Book a Consultation
+    END
           
 ##While we have the capability, we prefer not to use a traditional attribute or Xpath locator because they are difficult to read, write, and maintain.
     #ClickElement                //*[contains(@class,"secondary-btn v2 w-button")]                                  #Nice comment from a cool good looking dude
