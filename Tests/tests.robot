@@ -155,10 +155,13 @@ Proton Mail Send
     TypeText                    Email or Username           slockardCopado@proton.me
     TypeText                    Password                    ${protonPass}
     ClickText                   Sign in                     delay=5
-    ClickText                   Proton Mail
+    isText                      Welcome                     timeout=10
+    ClickText                   Mail
     ClickText                   New message
 
-    WriteText                   demoSupport@copado.com
+    ${ad}                       isText                      Get the deal
+    Run Keyword If              ${ad}                       ClickText    Close    anchor=Get the deal
+    TypeText                    To                   demoSupport@copado.com
     TypeText                    Subject                     Password reset
     TypeText                    Sent with Proton Mail secure email                      Please reset the password for my user, I forgot it and do not have access to recovery methods.
     #Delete draft to prevent spam, in this demo we pretend that Email to Case is being triggered.
