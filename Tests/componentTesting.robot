@@ -10,7 +10,7 @@ ${leadUrl}                     ${EMPTY}                  # Will store our lead U
 *** Test Cases ***
 Test 1 Step A Only
     [Documentation]             Shows login and app launch
-    Step A Login and Launch App
+    Step A Login and Launch App 
 
 # Test 2 Steps A,B
 #     [Documentation]             Shows creating a lead and storing URL
