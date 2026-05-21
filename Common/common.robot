@@ -83,3 +83,13 @@ Login As
     ClickElement                //*[@title\="${persona}"]                               delay=2                     # wait for list to populate, then click
     VerifyText                  Freeze                      timeout=45                  # this is slow, needs longer timeout
     ClickText                   Login                       anchor=Freeze               partial_match=False         delay=1
+
+Configure Product Bundles
+    [Documentation]    Selects bundles from pipe-delimited list (e.g., "Bundle A|Bundle B|Bundle C")
+    [Arguments]    ${bundles}
+    
+    @{bundle_list}=    Split String    ${bundles}    |
+    FOR    ${bundle}    IN    @{bundle_list}
+        ${bundle_trimmed}=    Strip String    ${bundle}
+        ClickItem    checkbox    anchor=${bundle_trimmed}    tag=paper-checkbox
+    END
