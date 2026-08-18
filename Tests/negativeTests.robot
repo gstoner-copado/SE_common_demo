@@ -15,7 +15,7 @@ ${past_date}                    01/01/1900
 Attempt to Create Lead with Invalid Email
     [Documentation]             Attempt to create a lead with an invalid email address
     [Tags]                      Lead                        Negative               Validation
-    Appstate                    Home
+    Login
     LaunchApp                   Sales
     ClickUntil                  Recently Viewed             Leads
     ClickText                   New                        anchor=Intelligence View
