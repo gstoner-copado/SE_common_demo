@@ -35,10 +35,8 @@ Setup
 
 Home
     [Documentation]             Navigate to homepage, login if needed
-    GoTo                        ${homeUrl}
-    Sleep                       3
-    ${login_status}=            IsText                      To access this page, you have to log in to Salesforce.                 2
-    Run Keyword If              ${login_status}             Login
+ 
+    Login
     VerifyText                  Home
 
 InsertRandomValue
