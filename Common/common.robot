@@ -24,19 +24,11 @@ Setup Browser
 End suite
     Close All Browsers
 
+
 Login
     [Documentation]             Login to Salesforce instance
-    GoTo                        ${loginUrl}
-    TypeText                    Username                    ${username}
-    TypeText                    Password                    ${password}
-    ClickText                   Log In
-    ${isMFA}=                   IsText                      Verify Your Identity        #Determines MFA is prompted
-    Log To Console              ${isMFA}
-    IF                          ${isMFA}                    #Conditional Statement for if MFA verification is required to proceed
-        ${mfa_code}=            GetOTP                      ${username}                 ${MY_SECRET}                ${password}
-        TypeSecret              Code                        ${mfa_code}
-        ClickText               Verify
-    END
+    JwtAuthenticate     ${CPQclient_id1}    ${username}    ${CPQprivate_key}
+    JwtLogin
 
 Setup       
     GoTo                        ${login_url}lightning/setup/SetupOneHome/home
